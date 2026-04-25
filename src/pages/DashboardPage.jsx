@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion'
 import {
-  Bar,
-  BarChart,
   CartesianGrid,
   Legend,
   Line,
@@ -13,7 +11,7 @@ import {
 } from 'recharts'
 import SectionHeader from '../components/SectionHeader'
 import StatCard from '../components/StatCard'
-import { activityRows, confidenceBuckets, dashboardSeries } from '../data/mock'
+import { activityRows, confidenceTrend, dashboardSeries } from '../data/mock'
 import RiskBadge from '../components/RiskBadge'
 
 function DashboardPage() {
@@ -23,18 +21,18 @@ function DashboardPage() {
         <SectionHeader
           eyebrow="Operations Analytics"
           title="Fraud command center"
-          description="Monitor detection volume, model confidence, and decision quality from a single operational dashboard."
+          description="Monitor detection volume, model confidence, and fraud pressure in one production-grade operating console."
         />
         <div className="grid gap-4 md:grid-cols-3">
           <StatCard label="Total checks" value="24,892" trend="+8.2% vs last week" />
-          <StatCard label="Fraud rate" value="18.4%" trend="-2.1% false positives" />
-          <StatCard label="Avg confidence" value="86.7%" trend="+4.8 model calibration" />
+          <StatCard label="Fraud rate" value="18.4%" trend="fraud spikes detected" />
+          <StatCard label="Model accuracy" value="96.1%" trend="confidence stabilizing" />
         </div>
       </section>
 
       <section className="grid gap-4 lg:grid-cols-2">
         <motion.div className="glass-card p-5" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-          <p className="metric-label">Fraud vs Safe over time</p>
+          <p className="metric-label">Fraud vs Safe volume</p>
           <div className="mt-4 h-72">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={dashboardSeries}>
@@ -43,24 +41,24 @@ function DashboardPage() {
                 <YAxis stroke="#94a3b8" />
                 <Tooltip contentStyle={{ background: '#111827', border: '1px solid rgba(255,255,255,0.1)' }} />
                 <Legend />
-                <Line type="monotone" dataKey="fraud" stroke="#f97316" strokeWidth={2} dot={false} />
-                <Line type="monotone" dataKey="safe" stroke="#1dd4bf" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="fraud" stroke="#ef4444" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="safe" stroke="#38bdf8" strokeWidth={2} dot={false} />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </motion.div>
 
         <motion.div className="glass-card p-5" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-          <p className="metric-label">Confidence distribution</p>
+          <p className="metric-label">Confidence trend</p>
           <div className="mt-4 h-72">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={confidenceBuckets}>
+              <LineChart data={confidenceTrend}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.1)" />
-                <XAxis dataKey="bucket" stroke="#94a3b8" />
+                <XAxis dataKey="date" stroke="#94a3b8" />
                 <YAxis stroke="#94a3b8" />
                 <Tooltip contentStyle={{ background: '#111827', border: '1px solid rgba(255,255,255,0.1)' }} />
-                <Bar dataKey="checks" fill="rgba(29, 212, 191, 0.7)" radius={[6, 6, 0, 0]} />
-              </BarChart>
+                <Line type="monotone" dataKey="confidence" stroke="#38bdf8" strokeWidth={2.5} />
+              </LineChart>
             </ResponsiveContainer>
           </div>
         </motion.div>

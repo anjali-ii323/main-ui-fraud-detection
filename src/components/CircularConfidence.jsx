@@ -1,10 +1,23 @@
-import { motion } from 'framer-motion'
+import { animate, motion, useMotionValue, useTransform } from 'framer-motion'
+import { useEffect } from 'react'
 
 function CircularConfidence({ score }) {
   const normalized = Math.max(0, Math.min(score, 100))
   const radius = 48
   const circumference = 2 * Math.PI * radius
   const strokeDashoffset = circumference - (normalized / 100) * circumference
+
+  const count = useMotionValue(0)
+  const rounded = useTransform(count, (latest) => Math.round(latest))
+
+  useEffect(() => {
+    const controls = animate(count, normalized, {
+      duration: 1.15,
+      ease: 'easeOut',
+    })
+
+    return () => controls.stop()
+  }, [count, normalized])
 
   return (
     <div className="relative flex h-28 w-28 items-center justify-center">
@@ -14,7 +27,7 @@ function CircularConfidence({ score }) {
           cx="60"
           cy="60"
           r={radius}
-          stroke="rgba(29, 212, 191, 0.85)"
+          stroke="rgba(56, 189, 248, 0.95)"
           strokeWidth="10"
           fill="none"
           strokeLinecap="round"
@@ -25,7 +38,7 @@ function CircularConfidence({ score }) {
         />
       </svg>
       <div className="absolute text-center">
-        <p className="text-xl font-semibold text-white">{normalized}%</p>
+        <motion.p className="text-xl font-semibold text-white">{rounded}%</motion.p>
         <p className="text-xs text-slate-400">Confidence</p>
       </div>
     </div>
