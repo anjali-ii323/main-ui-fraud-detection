@@ -19,12 +19,6 @@ export const demoScenarios = [
   },
 ]
 
-export const timelineTemplate = [
-  { step: 1, title: 'Initial content scan', status: 'Suspicious', note: 'Urgency cue + non-standard payment intent.' },
-  { step: 2, title: 'Link and domain verification', status: 'Fraud', note: 'Domain age < 60 days and mismatch with sender profile.' },
-  { step: 3, title: 'Cross-signal decision', status: 'Fraud', note: 'Combined pattern aligns with known social engineering chain.' },
-]
-
 export const dashboardSeries = [
   { date: 'Mon', fraud: 34, safe: 81 },
   { date: 'Tue', fraud: 40, safe: 76 },
@@ -34,11 +28,13 @@ export const dashboardSeries = [
   { date: 'Sat', fraud: 38, safe: 85 },
 ]
 
-export const confidenceBuckets = [
-  { bucket: '0-40', checks: 18 },
-  { bucket: '41-60', checks: 41 },
-  { bucket: '61-80', checks: 88 },
-  { bucket: '81-100', checks: 126 },
+export const confidenceTrend = [
+  { date: 'Mon', confidence: 79 },
+  { date: 'Tue', confidence: 81 },
+  { date: 'Wed', confidence: 83 },
+  { date: 'Thu', confidence: 86 },
+  { date: 'Fri', confidence: 89 },
+  { date: 'Sat', confidence: 91 },
 ]
 
 export const activityRows = [
@@ -49,11 +45,11 @@ export const activityRows = [
 ]
 
 export const rewardCurve = [
-  { episode: 1, baseline: 14, improved: 16 },
-  { episode: 2, baseline: 20, improved: 29 },
-  { episode: 3, baseline: 23, improved: 41 },
-  { episode: 4, baseline: 30, improved: 58 },
-  { episode: 5, baseline: 38, improved: 73 },
-  { episode: 6, baseline: 42, improved: 88 },
-  { episode: 7, baseline: 45, improved: 101 },
+  { episode: 1, baseline: 14, improved: 16, successRate: 45 },
+  { episode: 2, baseline: 20, improved: 29, successRate: 50 },
+  { episode: 3, baseline: 23, improved: 41, successRate: 57 },
+  { episode: 4, baseline: 30, improved: 58, successRate: 64 },
+  { episode: 5, baseline: 38, improved: 73, successRate: 71 },
+  { episode: 6, baseline: 42, improved: 88, successRate: 79 },
+  { episode: 7, baseline: 45, improved: 101, successRate: 86 },
 ]

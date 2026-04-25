@@ -23,8 +23,8 @@ function App() {
         <header className="sticky top-4 z-20 mb-10 rounded-2xl border border-white/10 bg-surface/70 p-4 shadow-soft backdrop-blur-xl">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.22em] text-slate-400">FraudShield AI</p>
-              <h1 className="text-lg font-semibold text-slate-100">Decision Intelligence Platform</h1>
+              <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Sentinel Finance AI</p>
+              <h1 className="text-lg font-semibold text-slate-100">Fraud Decision Intelligence System</h1>
             </div>
             <nav className="flex flex-wrap gap-2">
               {navItems.map((item) => (
@@ -33,7 +33,7 @@ function App() {
                   to={item.to}
                   className={({ isActive }) =>
                     `rounded-xl px-4 py-2 text-sm transition ${
-                      isActive ? 'bg-accent/15 text-accent' : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                      isActive ? 'bg-accent/20 text-accent' : 'text-slate-300 hover:bg-white/5 hover:text-white'
                     }`
                   }
                 >

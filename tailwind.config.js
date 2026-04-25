@@ -4,10 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        base: '#060a12',
-        surface: '#0b1220',
-        panel: '#101a2b',
-        accent: '#1dd4bf',
+        base: '#050812',
+        surface: '#090f1d',
+        panel: '#111b2f',
+        accent: '#38bdf8',
+        accentSoft: '#7c3aed',
         alert: '#ef4444',
         caution: '#f59e0b',
       },
@@ -16,7 +17,7 @@ export default {
       },
       backgroundImage: {
         'mesh-soft':
-          'radial-gradient(circle at 20% 20%, rgba(29, 212, 191, 0.10), transparent 40%), radial-gradient(circle at 80% 10%, rgba(56, 189, 248, 0.10), transparent 35%), radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.08), transparent 40%)',
+          'radial-gradient(circle at 18% 12%, rgba(56, 189, 248, 0.14), transparent 42%), radial-gradient(circle at 78% 8%, rgba(124, 58, 237, 0.12), transparent 38%), radial-gradient(circle at 56% 86%, rgba(14, 165, 233, 0.08), transparent 42%)',
       },
     },
   },

@@ -3,24 +3,29 @@ import SectionHeader from '../components/SectionHeader'
 
 const steps = [
   {
-    title: 'Step 1: Input message',
-    icon: '✉️',
-    text: 'Ingest message text, sender identity, and destination URL from the transaction context.',
-  },
-  {
-    title: 'Step 2: Feature extraction',
+    title: 'Agent',
     icon: '🧠',
-    text: 'Generate structured risk features from language intent, link intelligence, and reputation signals.',
+    text: 'The fraud policy agent interprets transaction language and context before making a decision.',
   },
   {
-    title: 'Step 3: AI decision',
-    icon: '🛡️',
-    text: 'Run sequential policy logic to classify risk as Safe, Suspicious, or Fraud with calibrated confidence.',
+    title: 'Environment',
+    icon: '🌐',
+    text: 'Signals from message text, sender identity, and link metadata define the operating environment.',
   },
   {
-    title: 'Step 4: Reward + feedback',
+    title: 'Action',
+    icon: '⚡',
+    text: 'The model flags each event as Safe, Suspicious, or Fraud and routes the correct control response.',
+  },
+  {
+    title: 'Reward',
+    icon: '🎯',
+    text: 'Correct interventions are rewarded based on loss prevention and reduced false positives.',
+  },
+  {
+    title: 'Learning',
     icon: '📈',
-    text: 'Feed outcomes into the reward loop to continuously improve risk containment and decision quality.',
+    text: 'Feedback updates policy confidence so future decisions are faster, clearer, and more accurate.',
   },
 ]
 
@@ -29,11 +34,11 @@ function HowItWorksPage() {
     <div className="pb-8">
       <SectionHeader
         eyebrow="Workflow"
-        title="How the platform makes resilient fraud decisions"
-        description="A minimal four-step architecture designed for explainable, measurable, and continuously improving fraud defense."
+        title="Agent → Environment → Action → Reward → Learning"
+        description="A compact reinforcement loop designed for explainable fraud prevention in modern financial operations."
       />
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {steps.map((step, idx) => (
           <motion.article
             key={step.title}
@@ -42,7 +47,7 @@ function HowItWorksPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.3, delay: idx * 0.07 }}
-            whileHover={{ y: -2 }}
+            whileHover={{ y: -2, scale: 1.01 }}
           >
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-lg">

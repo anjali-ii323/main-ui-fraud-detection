@@ -8,7 +8,8 @@
 
 body {
   margin: 0;
-  background: #060a12;
+  background: #050812;
+  color: #e2e8f0;
 }
 
 .glass-card {
@@ -17,4 +18,15 @@ body {
 
 .metric-label {
   @apply text-xs uppercase tracking-[0.18em] text-slate-400;
+}
+
+.glow-aura {
+  position: absolute;
+  inset: auto auto 0 0;
+  width: 420px;
+  height: 420px;
+  border-radius: 9999px;
+  filter: blur(100px);
+  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.22), rgba(124, 58, 237, 0.11), transparent 70%);
+  pointer-events: none;
 }
