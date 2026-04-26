@@ -13,6 +13,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -42,4 +46,45 @@ body {
   background: radial-gradient(circle at 20% 10%, rgba(41, 211, 255, 0.22), transparent 50%),
     radial-gradient(circle at 80% 0%, rgba(124, 140, 255, 0.22), transparent 48%);
   opacity: 0.7;
+}
+
+.action-button {
+  @apply transition duration-300 hover:scale-[1.02] hover:shadow-glow;
+}
+
+.interactive-card {
+  @apply transition duration-300 hover:border-accent/25 hover:shadow-glow;
+}
+
+.hero-signal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image: radial-gradient(circle at 15% 30%, rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+    radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+    linear-gradient(100deg, transparent 35%, rgba(124, 140, 255, 0.4) 50%, transparent 65%);
+  background-size: 160px 120px, 200px 160px, 300% 100%;
+  animation: signalFlow 12s linear infinite;
+  pointer-events: none;
+}
+
+.premium-section {
+  background: radial-gradient(circle at 15% 15%, rgba(124, 140, 255, 0.28), transparent 46%),
+    radial-gradient(circle at 80% 10%, rgba(93, 66, 255, 0.2), transparent 44%), rgba(9, 13, 25, 0.85);
+}
+
+input,
+textarea,
+select {
+  @apply transition duration-200 focus:border-accent/50 focus:shadow-glow;
+}
+
+@keyframes signalFlow {
+  0% {
+    background-position: 0 0, 0 0, 0% 0;
+  }
+  100% {
+    background-position: 0 0, 0 0, 130% 0;
+  }
 }
