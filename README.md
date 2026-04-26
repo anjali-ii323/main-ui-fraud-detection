@@ -1,254 +1,180 @@
-Problem : What capability gap are we solving?
-Traditional fraud detection systems act like black-box classifiers, they simply label a message as fraud or safe without explaining why or what’s at stake.
-This creates a major gap.
+# AI Fraud Decision Intelligence Platform
 
+An AI-powered fraud detection environment that goes beyond simple classification — simulating how an intelligent system **reasons, evaluates risk, and makes financially aware decisions** in real time.
 
-No decision reasoning
+---
 
+## 🧩 Problem
 
-No risk evolution
+Most fraud detection systems behave like black boxes.  
+They output *“fraud”* or *“safe”* — but provide no insight into:
 
+- why the decision was made  
+- how risky the situation is  
+- what the financial consequences are  
+- how the system improves over time  
 
-No financial context
+This lack of transparency limits trust and real-world usability.
 
+---
 
-No learning feedback loop
+## 🚀 What We Built
 
+This project introduces a **reinforcement learning–style fraud decision environment**.
 
- We target this gap by building a system that simulates how an intelligent agent actually makes fraud decisions step-by-step, not just the final answer.
+Instead of a static classifier, we simulate an **agent interacting with a dynamic environment**, receiving feedback, and improving decisions over time.
 
-Environment What does the agent do?
-We built a reinforcement learning-style fraud detection environment using OpenEnv principles.
- Agent Interaction Loop
-Message Input → Environment → Agent Action → Reward → Feedback
-What the agent sees (Observation)
+The system combines:
 
+- an interactive environment  
+- a reward-driven decision process  
+- a structured API  
+- a premium frontend for visualization  
 
-Message text
+---
 
+## 🔄 System Overview
+User Input → Environment → Agent Decision → Reward Engine → Feedback → UI
 
-Extracted features:
+### Agent Actions
 
+- `0 → Safe`
+- `1 → Fraud`
+- `2 → Suspicious`
 
-urgency signals
+---
 
+## Environment Design
 
-suspicious links
+The environment is built to resemble real-world fraud scenarios.
 
+### Observations
 
-keywords
+The agent receives:
+- message text
+- extracted signals (urgency, links, keywords, sender patterns)
 
+### Reward Logic
 
-sender patterns
+Decisions are evaluated using both correctness and financial impact:
 
+- Correct fraud detection → high reward  
+- Suspicious classification → partial reward  
+- Missed fraud → strong penalty  
+- Incorrect classification → negative reward  
 
+### Financial Signals
 
+Each decision includes:
 
+- money saved  
+- money lost  
+- money at risk  
 
-What the agent does (Actions)
-The agent chooses:
+This introduces real-world stakes into the learning process.
 
+---
 
-0 → Safe
+## Backend Architecture
 
+Built with FastAPI.
 
-1 → Fraud
+Core components:
 
+- `env.py` → environment logic  
+- `reward_engine.py` → reward + financial computation  
+- `models.py` → structured outputs  
+- `app.py` → API layer  
 
-2 → Suspicious
+### API Endpoints
 
+- `POST /reset` → initializes a new scenario  
+- `POST /step` → applies agent action and returns result  
+- `GET /state` → current environment state  
 
+---
 
- What the agent gets (Reward)
-Reward is based on correctness + financial impact
+## Frontend Experience
 
+A multi-page SaaS-style interface designed to visualize decision intelligence.
 
-Correct fraud detection → high positive reward
+Key capabilities:
 
+- real-time fraud analysis  
+- step-by-step reasoning simulation  
+- risk and confidence visualization  
+- financial impact display  
+- training insights dashboard  
 
-Suspicious classification → partial reward
+The frontend strictly consumes backend responses, no fabricated data.
 
+---
 
-Missed fraud → heavy penalty
+## Training & Learning
 
+We evaluate the system using a simple training setup:
 
-Wrong classification → negative reward
+### Baseline Agent
+- random decision-making  
+- inconsistent rewards  
 
+### Improved Agent
+- rule-based decision strategy  
+- learns to identify fraud patterns  
+- achieves higher and more stable rewards  
 
-Additionally:
+---
 
+## Results
 
-Detecting fraud → money saved
+Training demonstrates clear improvement:
 
+- increasing reward trend across episodes  
+- fewer missed fraud cases  
+- more consistent classifications  
 
-Missing fraud → money lost
+This validates that the environment provides **meaningful learning signals**.
 
+---
 
-Risky case → money at risk
+## Why This Matters
 
+This system is relevant for domains where **decision quality and transparency are critical**:
 
-this makes the environment realistic, not just academic.
- System Architecture
- Backend (FastAPI)
+- fintech and banking systems  
+- phishing and scam detection  
+- cybersecurity platforms  
 
+Key advantages:
 
-env.py → environment logic
+- interpretable decision-making  
+- visibility into financial risk  
+- simulation of real-world fraud scenarios  
+- foundation for reinforcement learning research  
 
+---
 
-reward_engine.py → scoring + financial impact
+## Deployment
 
+The platform is deployed using a unified architecture:
 
-models.py → structured outputs
+- FastAPI backend  
+- React frontend  
+- Docker-based deployment  
+- hosted on Hugging Face Spaces  
 
+---
 
-API:
+## Links
 
+- Live Demo: <your-link>  
+- Training Notebook: <your-colab-link>  
+- Demo Video (optional): <your-video-link>  
 
-POST /reset
+---
 
+## Summary
 
-POST /step
+This project reframes fraud detection as a **decision intelligence problem** rather than a classification task.
 
-
-
-
-
-🔹 Frontend (React SaaS UI)
-
-
-Input → message, URL, sender
-
-
-Calls backend APIs
-
-
-Visualizes:
-
-
-Risk level
-
-
-Confidence
-
-
-Signals
-
-
-Explanation
-
-
-Financial impact
-
-
-
-
- Important: UI does not generate logic, only displays backend output.
-
- Results — What changed after training?
-We evaluated two agents:
- Baseline Agent
- Random actions
-
-
-Low and unstable rewards
-
-
- Trained / Improved Agent
-
-
-Learns fraud patterns
-
-
-Maximizes reward over time
-
-
-More consistent decisions
-
- Evidence of Learning
-
-Reward increases over episode
-
-Fewer missed fraud cases
-
-Better classification consistency
-
-
- This is shown using a reward vs episode graph
-
-Example
-Input:
-"Win ₹10,000 now!!! Click here"
-
-
-Before → predicted Safe 
-
-
-After → predicted Fraud 
-
-
-
- Why does this matter?
-This system is relevant for:
- Banks & fintech
-
-
-Prevent financial fraud in real-time
-
-
- Messaging platforms
-
-
-Detect phishing and scam messages
-
-
- Cybersecurity systems
-
-
-Understand attack patterns, not just detect them
-
-
-
- Key Value
-Unlike traditional systems, this platform provides:
-
-
-Explainable AI decisions
-
-
-Financial risk visibility
-
-
-Sequential reasoning simulation
-
-
-Learning-based improvement
-
-
- It’s not just detection — it’s decision intelligence
-
- What we built (simple explanation)
-We built an AI-powered fraud decision environment where:
-
-
-An agent analyzes messages step-by-step
-
-
-Makes decisions (safe / fraud / suspicious)
-
-
-Receives reward based on correctness and financial impact
-
-
-Improves over time
-
-
-The frontend allows users to interact with this system and visualize:
-
-
-reasoning
-
-
-risk
-
-
-financial consequences
+By combining environment simulation, reward-based learning, and explainable outputs, it creates a system that is both technically meaningful and practically relevant.
